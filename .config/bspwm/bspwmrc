@@ -53,7 +53,7 @@ bspc config pointer_modifier	   super
 ####################
 
 bspc config borderless_monocle     true
-bspc config single_monocle	   false
+bspc config single_monocle	   true
 bspc config gapless_monocle        false
 bspc config paddingless_monocle	   false
 
