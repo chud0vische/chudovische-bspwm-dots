@@ -1,37 +1,66 @@
 #! /bin/sh
 
+#          :::::::::   ::::::::  :::::::::  :::       :::   :::   ::: 
+#         :+:    :+: :+:    :+: :+:    :+: :+:       :+:  :+:+: :+:+: 
+#        +:+    +:+ +:+        +:+    +:+ +:+       +:+ +:+ +:+:+ +:+ 
+#       +#++:++#+  +#++:++#++ +#++:++#+  +#+  +:+  +#+ +#+  +:+  +#+  
+#      +#+    +#+        +#+ +#+        +#+ +#+#+ +#+ +#+       +#+   
+#     #+#    #+# #+#    #+# #+#         #+#+# #+#+#  #+#       #+#    
+#    #########   ########  ###          ###   ###   ###       ###    
+#
+#    ------------------------- config ------------------------------- 
+#    --------------------- by chud0vische ---------------------------
+
+
+#############
+# Autostart #
+#############
+
 sxhkd &
-xsetroot -cursor_name left_ptr &
-setxkbmap -layout us,ru -option 'grp:alt_shift_toggle' &
 picom &
-xmousepasteblock &
-feh --bg-fill ~/.config/wallpapers/swamp &
 polybar &
 
+# Wallpaper
+feh --bg-fill ~/.config/wallpapers/swamp &
 
-bspc monitor HDMI-A-0 -d 1 3 5 7
-bspc monitor DisplayPort-0 -d 2 4 6 8
+# Keyboard layouts
+setxkbmap -layout us,ru -option 'grp:alt_shift_toggle' &
 
-bspc config border_width        2
-bspc config window_gap          10
+# Mouse fixes
+xsetroot -cursor_name left_ptr &
+xmousepasteblock &
 
+
+############
+# Monitors #
+############
+
+bspc monitor HDMI-A-0              -d 1 3 5 7
+bspc monitor DisplayPort-0         -d 2 4 6 8
+
+# General Windows Settings
+bspc config border_width           2
+bspc config window_gap             10
 bspc config split_ratio            0.5
 
-bspc config borderless_monocle     true
-bspc config gapless_monocle        true
-
+# Windows control
 bspc config focus_follows_pointer  true
 bspc config pointer_modifier	   super
 
-bspc config single_monocle	   true
-bspc config borderless_monocle     true
-bspc config gapless_monocle        false
-bspc config paddingless_monocle	   true
- 
-bspc rule -a blueman-manager state=floating manage=on layer=normal desktop=5 follow=off
-bspc rule -a nekoray desktop=5
 
-#bspc rule -a Chromium desktop='^2'
-#bspc rule -a mplayer2 state=floating
-#bspc rule -a Kupfer.py focus=on
-#bspc rule -a Screenkey manage=off
+####################
+# Monocle Settings #
+####################
+
+bspc config borderless_monocle     true
+bspc config single_monocle	   false
+bspc config gapless_monocle        false
+bspc config paddingless_monocle	   false
+
+
+#############
+# App rules #
+#############
+
+bspc rule -a nekoray desktop=5 follow=off
+bspc rule -a qutebrowser desktop=1 follow=off
